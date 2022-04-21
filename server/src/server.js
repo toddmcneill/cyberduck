@@ -8,8 +8,22 @@ const app = express()
 app.use(express.json())
 
 // Back end
+app.post('/check-password', (req, res) => {
+  const { password } = req.body
+  if (!password) {
+    return res.status(400).send('Missing password in body')
+  }
+  if (password === process.env.ACCESS_PASSWORD) {
+    return res.send({ success: true })
+  }
+  return res.send({ success: false })
+})
+
 app.post('/prompt', async (req, res) => {
-  const { prompt } = req.body
+  const { prompt, password } = req.body
+  if (!password || password !== process.env.ACCESS_PASSWORD) {
+    return res.status(401).send('Missing or invalid password')
+  }
   if (!prompt) {
     return res.status(400).send('Missing prompt in body')
   }
