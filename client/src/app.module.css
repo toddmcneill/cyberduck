@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.headerText {
+  font-style: italic;
+}
+
+.logo {
+  height: 70px;
+}
+
+.reverse {
+  transform: scaleX(-1);
+}

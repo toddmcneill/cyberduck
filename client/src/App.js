@@ -1,72 +1,31 @@
 import './App.css'
-import { useState } from 'react'
-import Password from './components/password'
+import duck from './images/duck.png'
+import { useRoutes, A } from 'hookrouter'
+import Main from './components/main'
+import Account from './components/account'
+
+import styles from './app.module.css'
+
+const routes = {
+  '/': () => <Main />,
+  '/account': () => <Account />
+}
 
 function App() {
-  const [question, setQuestion] = useState('')
-  const [answer, setAnswer] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [password, setPassword] = useState('')
-
-  const submitForm = async () => {
-    setLoading(true)
-    await fetch('http://localhost:3000/prompt', {
-      method: 'POST',
-      headers: new Headers({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }),
-      body: JSON.stringify({ prompt: question, password }),
-    }).then(response => {
-      if(response.ok) {
-        response.json().then(result => setAnswer(result.answer))
-      } else {
-       setLoading(false) 
-      }
-    })
-    setLoading(false)
-  }
-
-  const renderPassword = () => {
-    if (password) {
-      return null
-    }
-    return <Password updatePassword={(newPassword) => {
-      setPassword(newPassword)
-    }}/>
-  }
-
-  const renderForm = () => {
-    if (!password) {
-      return null
-    }
-    if (loading) {
-      return <p>Loading... </p>
-    }
-    return (
-      <div>
-        <div>
-          <form className="form" onSubmit={submitForm}>
-            <label>Describe your dilema* </label>
-            <textarea required value={question} onChange={e => setQuestion(e.target.value)}></textarea>
-            <button type="submit" disabled={!question}>Submit</button>
-          </form>
-        </div>
-
-        {answer && <pre className="answer">{answer}</pre>}
-      </div>
-    )
-  }
-
+  const routeResult = useRoutes(routes)
   return (
     <div className="App">
       <header className="App-header">
-        <h1>CyberDuck</h1>
+        <h1 className={styles.header}>
+          <img src={duck} className={`${styles.logo} ${styles.reverse}`} />
+          <span className={styles.headerText}>C̷̄͋Ÿ̴̈́B̴̅̅Ë̸́͌Ŕ̷͂D̵̖̿Ù̸̆C̵̛̍Ḱ̷̐</span>
+          <img src={duck} className={styles.logo} />
+        </h1>
         <p>Your AI Powered Rubber Ducky Debugging Platform</p>
+        <A href='/'>Main</A>
+        <A href='/account'>Account</A>
       </header>
-
-      {renderPassword()}
-      {renderForm()}
+      {routeResult}
     </div>
   )
 }
