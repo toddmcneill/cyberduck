@@ -6,5 +6,8 @@
   "author": "Todd McNeill <toddmcneill@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["server", "client"]
+  "workspaces": ["server", "client"],
+  "scripts": {
+    "start": "yarn workspace server start"
+  }
 }
