@@ -1,0 +1,24 @@
+version: '3.2'
+
+services:
+  server:
+    container_name: server
+    build: .
+    volumes:
+      - ./server:/app/server
+      - ./client/build:/app/server/build
+      - ./node_modules:/app/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      STATIC_CONTENT_PATH: build
+    command: yarn workspace server start
+
+  client-build:
+    container_name: client-build
+    build: .
+    volumes:
+      - ./client:/app/client
+      - ./node_modules:/app/node_modules
+    command: yarn workspace client watch

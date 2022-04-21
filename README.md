@@ -2,8 +2,7 @@
 
 ## Development
 * Use node 16
+* Install docker
 * Run `yarn`
-* Run `yarn start`
+* Run `docker-compose up`
 * Visit `localhost:3000`
-
-Run `yarn workspace client build` after any change to front end code

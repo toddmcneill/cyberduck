@@ -7,6 +7,11 @@ const path = require('path')
 const app = express()
 app.use(express.json())
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`)
+  next()
+})
+
 // Back end
 app.post('/check-password', (req, res) => {
   const { password } = req.body
@@ -32,7 +37,7 @@ app.post('/prompt', async (req, res) => {
 })
 
 // Front end
-const staticPath = path.join(__dirname, '..', '..', 'client', process.env.STATIC_CONTENT_PATH)
+const staticPath = path.join(__dirname, '..', process.env.STATIC_CONTENT_PATH)
 app.use(express.static(staticPath))
 
 // Forward all other routes to the front end.
