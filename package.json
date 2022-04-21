@@ -1,0 +1,10 @@
+{
+  "name": "cyberduck",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:toddmcneill/cyberduck.git",
+  "author": "Todd McNeill <toddmcneill@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["server", "client"]
+}
