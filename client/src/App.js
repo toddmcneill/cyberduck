@@ -8,12 +8,18 @@ function App() {
 
   const submitForm = async () => {
     setLoading(true)
-    const res = await fetch('/prompt', { method: 'post', body: JSON.stringify({ prompt: question }) })
-    if (res.ok) {
-      const answer = await await res.json()
-      setAnswer(answer)
-      setLoading(false)
-    }
+    const answer = await (
+      await fetch('http://localhost:5000/prompt', {
+        method: 'post',
+        mode: 'no-cors',
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ "prompt": question }),
+      })
+    ).json()
+    setAnswer(answer)
     setLoading(false)
   }
 
@@ -30,9 +36,9 @@ function App() {
         <div>
           <div>
             <form className="form" onSubmit={submitForm}>
-              <label>Describe your dilema: </label>
-              <textarea value={question} onChange={e => setQuestion(e.value)}></textarea>
-              <button type="submit">Submit</button>
+              <label>Describe your dilema* </label>
+              <textarea required value={question} onChange={e => setQuestion(e.target.value)}></textarea>
+              <button type="submit" disabled={!question}>Submit</button>
             </form>
           </div>
 
