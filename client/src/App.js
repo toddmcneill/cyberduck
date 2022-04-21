@@ -11,7 +11,7 @@ const routes = {
   '/account': () => <Account />
 }
 
-function App() {
+export default function App() {
   const routeResult = useRoutes(routes)
   return (
     <div className="App">
@@ -29,5 +29,3 @@ function App() {
     </div>
   )
 }
-
-export default App
