@@ -8,6 +8,8 @@
   "private": true,
   "workspaces": ["server", "client"],
   "scripts": {
-    "start": "yarn workspace server start"
+    "client": "yarn workspace client start",
+    "server": "yarn workspace server start",
+    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\""
   }
 }
