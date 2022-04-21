@@ -8,18 +8,17 @@ function App() {
 
   const submitForm = async () => {
     setLoading(true)
-    const answer = await (
-      await fetch('http://localhost:5000/prompt', {
-        method: 'post',
-        mode: 'no-cors',
-        headers: {
+    const { answer: postAnswer } = await (
+      await fetch('http://localhost:3000/prompt', {
+        method: 'POST',
+        headers: new Headers({
           'Accept': '*/*',
           'Content-Type': 'application/json',
-        },
+        }),
         body: JSON.stringify({ "prompt": question }),
       })
     ).json()
-    setAnswer(answer)
+    setAnswer(postAnswer)
     setLoading(false)
   }
 
@@ -42,7 +41,7 @@ function App() {
             </form>
           </div>
 
-          {answer ? <div className="answer">{answer}</div> : null}
+          {answer ? <pre className="answer">{answer}</pre> : null}
         </div>
       )}
     </div>

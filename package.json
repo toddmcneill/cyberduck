@@ -6,10 +6,11 @@
   "author": "Todd McNeill <toddmcneill@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["server", "client"],
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "scripts": {
-    "client": "yarn workspace client start",
-    "server": "yarn workspace server start",
-    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\""
+    "start": "yarn workspace client build && yarn workspace server start"
   }
 }
