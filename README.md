@@ -3,6 +3,7 @@
 ## Development
 * Use node 16
 * Install docker
+* Copy server/.env.example to server/.env and edit values
 * Run `yarn`
 * Run `docker-compose up`
 * Visit `localhost:3000`
