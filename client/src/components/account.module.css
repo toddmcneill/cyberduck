@@ -1,0 +1,21 @@
+.account {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 40px 5px;
+  max-width: 600px;
+}
+
+.input{
+  background-color:whitesmoke;
+  width: 400px;
+  border-radius: 4px;
+  box-shadow: white 0 0 20px 10px;
+}
+
+
+

@@ -1,4 +1,10 @@
-.header {
+.top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header a {
   display: flex;
   align-items: center;
   column-gap: 40px;
@@ -14,6 +20,19 @@
 
 .reverse {
   transform: scaleX(-1);
+}
+
+.sideSection {
+  padding: 20px;
+  width: 200px;
+}
+
+.icons {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  height: 40px;
+  justify-content: flex-end;
 }
 
 .poweredBySubHeader {

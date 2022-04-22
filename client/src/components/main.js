@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Password from './password'
 import styles from './main.module.css'
-import ReactDOM from 'react-dom'
+import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { useMadLib } from '../madlib'
+import MicIcon from '@mui/icons-material/Mic'
+import MicNoneIcon from '@mui/icons-material/MicNone'
 
 export default function Main() {
   const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('')
   const [loading, setLoading] = useState(false)
+  const [listening, setListening] = useState(false)
   const [password, setPassword] = useState('')
 
   const completedMadLib = useMadLib(question)
+
+  let SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
+  let recognition = new SpeechRecognition()
+  recognition.lang = 'en-US'
+  recognition.continuous = false
+  recognition.interimResults = false
+  recognition.maxAlternatives = 1
 
   const submitForm = async () => {
     setLoading(true)
@@ -33,6 +43,23 @@ export default function Main() {
     setLoading(false)
   }
 
+  useEffect(() => {
+    if (listening && question.length) {
+      setListening(false)
+      submitForm()
+    }
+  }, [question, listening])
+
+  const renderSpeech = () => {
+    setQuestion('')
+    setListening(true)
+    recognition.start()
+    recognition.onresult = event => {
+      let word = event.results[0][0].transcript
+      setQuestion(word)
+    }
+  }
+
   const renderPassword = () => {
     if (password) {
       return null
@@ -50,27 +77,34 @@ export default function Main() {
     if (!password) {
       return null
     }
-    if (loading) {
-      return <p>Loading... </p>
-    }
     return (
-      <div>
-        <div>
-          <form className="form" onSubmit={submitForm}>
-            <label>Describe your dilemma* </label>
-            <textarea
-              required
+      <div className={styles.main}>
+        <div className={styles.rectangle}>
+          <div>
+            <TextField
+              multiline
+              rows={5}
               value={question}
               onChange={e => setQuestion(e.target.value)}
               className={styles.textarea}
-            ></textarea>
-            <Button variant="contained" type="submit" disabled={!question}>
-              Submit
+              label="Describe your dilemma"
+            ></TextField>
+          </div>
+          <div
+            className="voice-input"
+            onClick={() => {
+              renderSpeech()
+            }}
+          >
+            {listening ? <MicIcon color="secondary" /> : <MicNoneIcon />}
+          </div>
+          <div>
+            <Button variant="contained" disabled={!question} onClick={submitForm}>
+              Help Me!
             </Button>
-          </form>
+          </div>
+          {loading ? <p>Loading... </p> : answer && <div className={styles.answer}>{answer}</div>}
         </div>
-
-        {answer && <pre className="answer">{answer}</pre>}
       </div>
     )
   }

@@ -1,4 +1,27 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.rectangle {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 .textarea {
-  width: 200px;
-  height: 120px;
+  width: 400px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: white 0 0 20px 10px;
+}
+
+.answer {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 40px;
+  border-radius: 40px 5px;
+  text-shadow: white 0 0 4px;
+  color: black;
+  font-weight: bold;
 }

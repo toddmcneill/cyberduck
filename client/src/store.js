@@ -6,8 +6,8 @@ export const initialState = {
     role: '',
     company: '',
     languages: '',
-    teammates: '',
     technologies: '',
+    teammates: '',
   },
 }
 

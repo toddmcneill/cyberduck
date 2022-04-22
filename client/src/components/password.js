@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 
 export default function Password({ updatePassword }) {
   const [password, setPassword] = useState('')
@@ -16,6 +18,7 @@ export default function Password({ updatePassword }) {
 
   const handleSavePassword = async () => {
     setLoading(true)
+    setErrorMessage('')
     const { success } = await (
       await fetch('check-password', {
         method: 'POST',
@@ -42,11 +45,21 @@ export default function Password({ updatePassword }) {
 
   return (
     <div>
-      <input value={password} type="text" placeholder="password" onInput={e => setPassword(e.target.value)} />
-      <button type="button" onClick={handleSavePassword} disabled={loading}>
-        Save Password
-      </button>
-      {errorMessage}
+      <div style={{ marginBottom: '10px' }}>
+        <TextField
+          style={{ backgroundColor: 'white' }}
+          value={password}
+          type="text"
+          placeholder="password"
+          onInput={e => setPassword(e.target.value)}
+        />
+      </div>
+      <div>
+        <Button variant="contained" onClick={handleSavePassword} disabled={loading}>
+          Save Password
+        </Button>
+      </div>
+      <div>{errorMessage}</div>
     </div>
   )
 }

@@ -5,25 +5,28 @@ export function useMadLib(question) {
 
   let allAnswers = []
   if (account.name) {
-    allAnswers.push(`My name is ${account.name}.`)
+    allAnswers.push(`Your name is ${account.name}.`)
   }
   if (account.company) {
-    allAnswers.push(`I work for ${account.company}.`)
+    allAnswers.push(`You work for ${account.company}.`)
   }
   if (account.role) {
-    allAnswers.push(`My role is a ${account.role}.`)
+    allAnswers.push(`Your job is a ${account.role}.`)
   }
   if (account.languages) {
-    allAnswers.push(`I write code using these languages: ${account.languages}.`)
+    allAnswers.push(`You write code using these langauges: ${account.languages}.`)
   }
   if (account.teammates) {
-    allAnswers.push(`I work with these people: ${account.teammates}.`)
+    allAnswers.push(`You work with these people: ${account.teammates}.`)
   }
   if (account.technologies) {
-    allAnswers.push(`I use these technologies: ${account.technologies}.`)
+    allAnswers.push(`You use these technologies: ${account.technologies}.`)
   }
-  allAnswers.push('I need help.')
   allAnswers.push(question)
 
-  return allAnswers.join(' ')
+  const lastBits = ['Here is what you should do.', 'Have you tried doing this?', 'What do you think?']
+
+  allAnswers.push(lastBits[Math.floor(Math.random() * lastBits.length)])
+
+  return allAnswers.join('\n')
 }
