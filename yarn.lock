@@ -5085,7 +5085,7 @@ ignore@^5.1.8, ignore@^5.2.0:
   resolved "https://registry.npmjs.org/ignore/-/ignore-5.2.0.tgz"
   integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
 
-immer@^9.0.7:
+immer@^9.0.12, immer@^9.0.7:
   version "9.0.12"
   resolved "https://registry.npmjs.org/immer/-/immer-9.0.12.tgz"
   integrity sha512-lk7UNmSbAukB5B6dh9fnh5D0bJTOFKxVg2cyJWTYrWRfhLrLMBquONcUs3aFq507hNoIZEDDh8lb8UtOizSMhA==
@@ -7377,7 +7377,7 @@ prepend-http@^2.0.0:
 
 prettier@^2.6.2:
   version "2.6.2"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-2.6.2.tgz"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
   integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
 
 pretty-bytes@^5.3.0, pretty-bytes@^5.4.1:
@@ -7448,6 +7448,14 @@ pstree.remy@^1.1.8:
   version "1.1.8"
   resolved "https://registry.npmjs.org/pstree.remy/-/pstree.remy-1.1.8.tgz"
   integrity sha512-77DZwxQmxKnu3aR542U+X8FypNzbfJ+C5XQDk3uWjWxn6151aIMGthWYRXTqT1E5oJvg+ljaa2OJi+VfvCOQ8w==
+
+pullstate@^1.24.0:
+  version "1.24.0"
+  resolved "https://registry.yarnpkg.com/pullstate/-/pullstate-1.24.0.tgz#2928b0826cde85f504ece5f7d88263b2d028effb"
+  integrity sha512-uKXQjGnZUNb3wg7STF3HvCDbGtYg7tju42QjVtaefMik6JpbadnmKgI8DgZL02SvtTNlFPosMQkAwuI/a9D8dg==
+  dependencies:
+    fast-deep-equal "^3.1.3"
+    immer "^9.0.12"
 
 pump@^3.0.0:
   version "3.0.0"

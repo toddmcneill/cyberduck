@@ -3,15 +3,18 @@ import duck from './images/duck.png'
 import { useRoutes, A } from 'hookrouter'
 import Main from './components/main'
 import Account from './components/account'
+import useLocalStorage from './useLocalStorage'
 
 import styles from './app.module.css'
 
 const routes = {
   '/': () => <Main />,
-  '/account': () => <Account />
+  '/account': () => <Account />,
 }
 
 export default function App() {
+  useLocalStorage()
+
   const routeResult = useRoutes(routes)
   return (
     <div className="App">
@@ -22,9 +25,12 @@ export default function App() {
           <img src={duck} className={styles.logo} />
         </h1>
         <p>Your AI-Powered Rubber Duck Debugging Platform</p>
-        <p className={styles.poweredBySubHeader}>Powered by <a href="https://openai.com/">OpenAI</a>'s <a href="https://en.wikipedia.org/wiki/GPT-3">GPT-3 AI</a></p>
-        <A href='/'>Main</A>
-        <A href='/account'>Account</A>
+        <p className={styles.poweredBySubHeader}>
+          Powered by <a href="https://openai.com/">OpenAI</a>'s{' '}
+          <a href="https://en.wikipedia.org/wiki/GPT-3">GPT-3 AI</a>
+        </p>
+        <A href="/">Main</A>
+        <A href="/account">Account</A>
       </header>
       {routeResult}
     </div>

@@ -20,10 +20,10 @@ export default function Password({ updatePassword }) {
       await fetch('check-password', {
         method: 'POST',
         headers: new Headers({
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
-        body: JSON.stringify({ "password": password }),
+        body: JSON.stringify({ password: password }),
       })
     ).json()
     if (success) {
@@ -35,15 +35,17 @@ export default function Password({ updatePassword }) {
     }
     setLoading(false)
   }
-  
+
   if (savedPassword) {
     return ''
   }
 
   return (
     <div>
-      <input value={password} type='text' placeholder='password' onInput={e => setPassword(e.target.value)} />
-      <button type='button' onClick={handleSavePassword} disabled={loading}>Save Password</button>
+      <input value={password} type="text" placeholder="password" onInput={e => setPassword(e.target.value)} />
+      <button type="button" onClick={handleSavePassword} disabled={loading}>
+        Save Password
+      </button>
       {errorMessage}
     </div>
   )
