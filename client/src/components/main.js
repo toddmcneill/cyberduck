@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import Password from './password'
 import styles from './main.module.css'
+import ReactDOM from 'react-dom';
+import Button from '@mui/material/Button';
+
 
 export default function Main() {
 
@@ -53,7 +56,7 @@ export default function Main() {
           <form className="form" onSubmit={submitForm}>
             <label>Describe your dilemma* </label>
             <textarea required value={question} onChange={e => setQuestion(e.target.value)} className={styles.textarea}></textarea>
-            <button type="submit" disabled={!question}>Submit</button>
+            <Button variant="contained" type="submit" disabled={!question}>Submit</Button>
           </form>
         </div>
 
