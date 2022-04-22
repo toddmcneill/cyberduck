@@ -12,7 +12,7 @@ export default function Main() {
 
   const submitForm = async () => {
     setLoading(true)
-    await fetch('http://localhost:3000/prompt', {
+    await fetch('prompt', {
       method: 'POST',
       headers: new Headers({
         'Accept': 'application/json',

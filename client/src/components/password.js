@@ -17,7 +17,7 @@ export default function Password({ updatePassword }) {
   const handleSavePassword = async () => {
     setLoading(true)
     const { success } = await (
-      await fetch('http://localhost:3000/check-password', {
+      await fetch('check-password', {
         method: 'POST',
         headers: new Headers({
           'Accept': 'application/json',
