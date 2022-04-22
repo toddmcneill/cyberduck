@@ -36,6 +36,11 @@ export default function Main() {
     }).then(response => {
       if (response.ok) {
         response.json().then(result => setAnswer(result.answer))
+
+        // Quack
+        const audio = new Audio('quack.mp3')
+        audio.volume = 0.3
+        audio.play()
       } else {
         setLoading(false)
       }

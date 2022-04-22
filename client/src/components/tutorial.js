@@ -21,6 +21,11 @@ export default function Tutorial() {
   const handleClose = () => {
     setOpenModal(false)
     localStorage.setItem('tutorialVisited', 'true')
+    
+    // Quack
+    const audio = new Audio('quack.mp3')
+    audio.volume = 0.3
+    audio.play()
   }
 
   return (
