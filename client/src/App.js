@@ -21,7 +21,7 @@ export default function App() {
           <span className={styles.headerText}>C̷̄͋Ÿ̴̈́B̴̅̅Ë̸́͌Ŕ̷͂D̵̖̿Ù̸̆C̵̛̍Ḱ̷̐</span>
           <img src={duck} className={styles.logo} />
         </h1>
-        <p>Your AI Powered Rubber Ducky Debugging Platform</p>
+        <p>Your AI Powered Rubber Duck Debugging Platform</p>
         <A href='/'>Main</A>
         <A href='/account'>Account</A>
       </header>
