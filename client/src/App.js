@@ -21,7 +21,8 @@ export default function App() {
           <span className={styles.headerText}>C̷̄͋Ÿ̴̈́B̴̅̅Ë̸́͌Ŕ̷͂D̵̖̿Ù̸̆C̵̛̍Ḱ̷̐</span>
           <img src={duck} className={styles.logo} />
         </h1>
-        <p>Your AI Powered Rubber Ducky Debugging Platform</p>
+        <p>Your AI-Powered Rubber Ducky Debugging Platform</p>
+        <p className={styles.poweredBySubHeader}>Powered by <a href="https://openai.com/">OpenAI</a>'s <a href="https://en.wikipedia.org/wiki/GPT-3">GPT-3 AI</a></p>
         <A href='/'>Main</A>
         <A href='/account'>Account</A>
       </header>
