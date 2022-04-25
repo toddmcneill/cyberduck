@@ -124,7 +124,7 @@ export default function Main() {
               onChange={e => setQuestion(e.target.value)}
               className={styles.textarea}
               label="Describe your dilemma"
-            ></TextField>
+            />
           </div>
           <div
             className="voice-input"
