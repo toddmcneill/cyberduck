@@ -36,26 +36,19 @@ export default function App() {
             <div id="ground"></div>
           </div>
         </div>
-        <header className="App-header">
+        <header className={styles.appHeader}>
           <div className={styles.top}>
-            <div className={styles.sideSection} />
-            <h1 className={styles.header}>
-              <Link href="/" component={A} underline="none" color="#FFF">
-                <img src={duck} className={`${styles.logo} ${styles.reverse}`} />
-                <Title />
-                <img src={duck} className={styles.logo} />
-              </Link>
-            </h1>
-            <div className={`${styles.sideSection} ${styles.icons}`}>
-              <Tutorial />
-              <Link color="secondary" href="/account" component={A}>
-                <ManageAccountsIcon />
-              </Link>
-            </div>
+            <img src={duck} className={`${styles.logo} ${styles.reverseLogo}`} />
+            <Link href="/" component={A} underline="none" color="#FFF">
+              <Title />
+            </Link>
+            <img src={duck} className={styles.logo} />
           </div>
-          <Typography variant="h4" component="div">
+
+          <Typography variant="h4" component="div" className={styles.tagline}>
             Your AI-Powered Rubber Duck Debugging Platform
           </Typography>
+
           <p className={styles.poweredBySubHeader}>
             Powered by{' '}
             <Link href="https://openai.com/" target="_blank">
@@ -66,6 +59,13 @@ export default function App() {
               GPT-3 AI
             </Link>
           </p>
+
+          <div className={styles.icons}>
+            <Tutorial />
+            <Link color="secondary" href="/account" component={A}>
+              <ManageAccountsIcon />
+            </Link>
+          </div>
         </header>
         <section className="main">{routeResult}</section>
       </div>
