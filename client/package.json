@@ -23,7 +23,7 @@
     "format": "prettier --write 'src/**/*.js'"
   },
   "watch": {
-    "build": "src/**/*.js"
+    "build": "src/**/*.*"
   },
   "eslintConfig": {
     "extends": [

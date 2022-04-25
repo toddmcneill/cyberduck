@@ -5,28 +5,6 @@
   min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  margin-bottom: 40px;
-  position:relative;
-  z-index: 1;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -39,7 +17,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 .main{
   position: relative;
@@ -55,18 +32,18 @@
 
 #top {
   width: 100%;
-	height: 67%;
-	background: linear-gradient(transparent 50%, hotpink 160%);
-	box-shadow: 0 15px 50px 1px white;
-	position: absolute;
+  height: 67%;
+  background: linear-gradient(transparent 50%, hotpink 160%);
+  box-shadow: 0 15px 50px 1px white;
+  position: absolute;
   top: 0;
   left:0;
 }
 
 #sky {
-	position: absolute;
-	top: 0;
-	width: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
   animation: move 30s linear infinite;
   background: repeating-linear-gradient(pink 2px,transparent 3px,transparent 45px),repeating-linear-gradient(90deg,pink 2px,transparent 3px,transparent 50px) 10px 0;
   filter: drop-shadow(0 0 1px magenta) drop-shadow(0 0 3px magenta) drop-shadow(0 0 7px cyan);
@@ -75,46 +52,45 @@
 }
 
 #bottom {
-	position: absolute;
-	z-index: 2;
-	width: 100%;
-	height: 100%;
-	transform: perspective(500px) rotateX(65deg);
-	bottom: -15%;
-	background: linear-gradient(
-		90deg,
-		hotpink -60%,
-		transparent 40%,
-		transparent 60%,
-		hotpink 140%
-	);
-	clip-path: polygon(0 100%, 0 55%, 100% 55%, 100% 100%);  
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  transform: perspective(500px) rotateX(65deg);
+  bottom: -15%;
+  background: linear-gradient(
+    90deg,
+    hotpink -60%,
+    transparent 40%,
+    transparent 60%,
+    hotpink 140%
+  );
+  clip-path: polygon(0 100%, 0 55%, 100% 55%, 100% 100%);
 }
 
 #ground {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 54%;
-	background: repeating-linear-gradient(
-			white 2px,
-			transparent 3px,
-			transparent 40px
-		),
-		repeating-linear-gradient(90deg, white 2px, transparent 3px, transparent 50px);
-	filter: drop-shadow(0 0 1px cyan) drop-shadow(0 0 3px cyan)
-		drop-shadow(0 0 7px cyan);
-	animation: move 30s linear infinite;
-  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 54%;
+  background: repeating-linear-gradient(
+    white 2px,
+    transparent 3px,
+    transparent 40px
+  ),
+  repeating-linear-gradient(90deg, white 2px, transparent 3px, transparent 50px);
+  filter: drop-shadow(0 0 1px cyan) drop-shadow(0 0 3px cyan) drop-shadow(0 0 7px cyan);
+  animation: move 30s linear infinite;
+
 }
 
-#duck{  
+#duck{
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX( -50%);
   opacity:0.7;
-  animation: hueshift 5s linear infinite;
+  animation: hueshift 10s ease-in-out infinite;
 }
 
 .duck-body{
@@ -146,20 +122,20 @@
   border-style: solid;
   top: -24px;
   left: -49px;
-  
+
 }
 
 @keyframes move {
-	to {
-		background-position-y: 2000px;
-	}
+  to {
+    background-position-y: 2000px;
+  }
 }
 
 @keyframes hueshift {
-  from {
+  0% {
     filter: hue-rotate(0deg) drop-shadow(0 0 40px white);
   }
-  to {
+  100% {
     filter: hue-rotate(360deg) drop-shadow(0 0 40px white);
   }
 }

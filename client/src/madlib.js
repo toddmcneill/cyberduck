@@ -24,7 +24,7 @@ export function useMadLib(question) {
   }
   allAnswers.push(question)
 
-  const lastBits = ['Here is what you should do.', 'Have you tried doing this?', 'What do you think?']
+  const lastBits = ['Here is what you should do.', 'Try these steps.', 'Look at it this way.', 'Approach it like this.']
 
   allAnswers.push(lastBits[Math.floor(Math.random() * lastBits.length)])
 

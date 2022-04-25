@@ -15,7 +15,7 @@ const openai = new OpenAIApi(configuration)
 async function invoke(prompt) {
   const response = await openai.createCompletion('text-curie-001', {
     prompt,
-    max_tokens: 100,
+    max_tokens: Math.floor(Math.random() * 200 + 50),
     temperature: 0.9,
   })
   return response.data.choices[0].text

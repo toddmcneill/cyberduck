@@ -25,7 +25,7 @@ export default function Account() {
         spacing={4}
         className={styles.grid}
       >
-        <Grid item>
+        <Grid item className={styles.gridItem}>
           <TextField
             label="What is your name?"
             className={styles.input}
@@ -33,7 +33,7 @@ export default function Account() {
             onInput={e => handleUpdate('name', e.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item className={styles.gridItem}>
           <TextField
             label="What is your role?"
             className={styles.input}
@@ -41,7 +41,7 @@ export default function Account() {
             onInput={e => handleUpdate('role', e.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item className={styles.gridItem}>
           <TextField
             label="What is your company's name?"
             className={styles.input}
@@ -49,7 +49,7 @@ export default function Account() {
             onInput={e => handleUpdate('company', e.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item className={styles.gridItem}>
           <TextField
             label="What languages do you use?"
             className={styles.input}
@@ -57,7 +57,7 @@ export default function Account() {
             onInput={e => handleUpdate('languages', e.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item className={styles.gridItem}>
           <TextField
             label="What technologies do you use?"
             className={styles.input}
@@ -65,7 +65,7 @@ export default function Account() {
             onInput={e => handleUpdate('technologies', e.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item className={styles.gridItem}>
           <TextField
             label="Who are your teammates?"
             className={styles.input}
@@ -73,7 +73,7 @@ export default function Account() {
             onInput={e => handleUpdate('teammates', e.target.value)}
           />
         </Grid>
-        <Grid item>
+        <Grid item className={styles.gridItem}>
           <Link href="/" component={A}>
             <Button variant="contained">Done</Button>
           </Link>

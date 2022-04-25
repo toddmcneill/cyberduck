@@ -1,40 +1,63 @@
+.appHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  margin-bottom: 40px;
+  position:relative;
+  z-index: 1;
+}
+
 .top {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.header a {
-  display: flex;
+  justify-content: center;
   align-items: center;
   column-gap: 40px;
-}
-
-.headerText {
-  font-style: italic;
+  width: 100%;
 }
 
 .logo {
   height: 70px;
 }
 
-.reverse {
+.reverseLogo {
   transform: scaleX(-1);
-}
-
-.sideSection {
-  padding: 20px;
-  width: 200px;
 }
 
 .icons {
   display: flex;
   column-gap: 10px;
   align-items: center;
-  height: 40px;
-  justify-content: flex-end;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .poweredBySubHeader {
   font-size: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+  .top {
+    flex-direction: column;
+  }
+  .logo {
+    height: 50px;
+  }
+  .reverseLogo {
+    display: none;
+  }
+  .top span {
+    font-size: calc(10px + 7vmin);
+  }
+  div.tagline {
+    font-size: calc(10px + 2vmin);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .top {
+    margin-top: 40px;
+  }
 }

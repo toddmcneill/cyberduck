@@ -43,13 +43,10 @@ export default function Tutorial() {
               allow it to give more tailored answers.
             </li>
             <li>Spill your woes to cyberduck, let it know what you're struggling with, or just ask it a question.</li>
-            <li>Cyberduck will dispense wise (or not-so-wise) advice.</li>
+            <li>Cyberduck will quack out wise (or not-so-wise) advice.</li>
           </ul>
           <div className={styles.button}>
-            <Button
-              variant="contained"
-              onClick={handleClose}
-            >
+            <Button variant="contained" onClick={handleClose}>
               Begin
             </Button>
           </div>
