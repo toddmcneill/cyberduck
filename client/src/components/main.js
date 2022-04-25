@@ -44,7 +44,10 @@ export default function Main() {
         response.json().then(result =>{ 
           setAnswer(result.answer)
           if(speechSynthesis){
-            synthesis.text = result.answer + "Quack Quack." || "No Result Found"
+            if(!result.answer){
+              result.answer = "No Result Found."
+            }
+            synthesis.text = result.answer + " Quack Quack."
             speechSynthesis.speak(synthesis)
           }
         })       
