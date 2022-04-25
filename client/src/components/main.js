@@ -19,6 +19,12 @@ export default function Main() {
 
   let SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
   let recognition = new SpeechRecognition()
+  const speechSynthesis = window.webkitSpeechSynthesis || window.speechSynthesis
+  let synthesis = null
+  if(speechSynthesis){
+    synthesis = new SpeechSynthesisUtterance()
+  }
+  
   recognition.lang = 'en-US'
   recognition.continuous = false
   recognition.interimResults = false
@@ -35,13 +41,22 @@ export default function Main() {
       body: JSON.stringify({ prompt: completedMadLib, password }),
     }).then(response => {
       if (response.ok) {
-        response.json().then(result => setAnswer(result.answer))
-
+        response.json().then(result =>{ 
+          setAnswer(result.answer)
+          if(speechSynthesis){
+            synthesis.text = result.answer + "Quack Quack." || "No Result Found"
+            speechSynthesis.speak(synthesis)
+          }
+        })       
         // Quack
         const audio = new Audio('quack.mp3')
         audio.volume = 0.3
         audio.play()
       } else {
+        if(speechSynthesis){
+          synthesis.text = "No Result Found. Quack Quack."
+          speechSynthesis.speak(synthesis)
+        }
         setLoading(false)
       }
     })
@@ -50,6 +65,10 @@ export default function Main() {
 
   useEffect(() => {
     if (listening && question.length) {
+      if(speechSynthesis){
+        synthesis.text = "Loading..."
+        speechSynthesis.speak(synthesis)
+      }
       setListening(false)
       submitForm()
     }
