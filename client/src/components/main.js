@@ -7,18 +7,27 @@ import Button from '@mui/material/Button'
 import { useMadLib } from '../madlib'
 import MicIcon from '@mui/icons-material/Mic'
 import MicNoneIcon from '@mui/icons-material/MicNone'
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
 
 export default function Main() {
   const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('')
   const [loading, setLoading] = useState(false)
   const [listening, setListening] = useState(false)
+  const [readAnswer, setReadAnswer] = useState(false)
   const [password, setPassword] = useState('')
 
   const completedMadLib = useMadLib(question)
 
   let SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
   let recognition = new SpeechRecognition()
+  const speechSynthesis = window.webkitSpeechSynthesis || window.speechSynthesis
+  let synthesis = null
+  if (speechSynthesis) {
+    synthesis = new SpeechSynthesisUtterance()
+  }
+
   recognition.lang = 'en-US'
   recognition.continuous = false
   recognition.interimResults = false
@@ -35,13 +44,29 @@ export default function Main() {
       body: JSON.stringify({ prompt: completedMadLib, password }),
     }).then(response => {
       if (response.ok) {
-        response.json().then(result => setAnswer(result.answer))
-
+        response.json().then(result => {
+          setAnswer(result.answer)
+          if (speechSynthesis) {
+            if (!result.answer) {
+              result.answer = 'No Result Found.'
+            }
+            synthesis.text = result.answer
+            if (readAnswer) {
+              speechSynthesis.speak(synthesis)
+            }
+          }
+        })
         // Quack
         const audio = new Audio('quack.mp3')
         audio.volume = 0.3
         audio.play()
       } else {
+        if (speechSynthesis) {
+          synthesis.text = 'No Result Found.'
+          if (readAnswer) {
+            speechSynthesis.speak(synthesis)
+          }
+        }
         setLoading(false)
       }
     })
@@ -50,6 +75,12 @@ export default function Main() {
 
   useEffect(() => {
     if (listening && question.length) {
+      if (speechSynthesis) {
+        synthesis.text = 'Loading...'
+        if (readAnswer) {
+          speechSynthesis.speak(synthesis)
+        }
+      }
       setListening(false)
       submitForm()
     }
@@ -107,6 +138,22 @@ export default function Main() {
             <Button variant="contained" disabled={!question} onClick={submitForm}>
               Help Me!
             </Button>
+          </div>
+          <div>
+            <FormControlLabel
+              label="Read Answer Out Loud"
+              control={
+                <Checkbox
+                  checked={readAnswer}
+                  onChange={() => {
+                    if (readAnswer) {
+                      speechSynthesis.cancel()
+                    }
+                    setReadAnswer(!readAnswer)
+                  }}
+                />
+              }
+            />
           </div>
           {loading ? <p>Loading... </p> : answer && <div className={styles.answer}>{answer}</div>}
         </div>
